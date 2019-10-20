@@ -12,7 +12,7 @@ import "./database";
 class App {
   constructor() {
     this.server = express();
-
+    // aa
     Sentry.init(sentryConfig);
 
     this.middlewares();
