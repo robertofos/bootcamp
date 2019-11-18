@@ -1,9 +1,11 @@
 import "dotenv/config";
 import express from "express";
 import path from "path";
+import cors from "cors";
 import Youch from "youch";
 import * as Sentry from "@sentry/node";
 import "express-async-errors";
+
 import routes from "./routes";
 import sentryConfig from "./config/sentry";
 
@@ -22,6 +24,7 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
+    this.server.use(cors());
     this.server.use(express.json());
     // trata a questão do arquivo para apresentar na tela
     this.server.use(
